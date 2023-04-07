@@ -4,7 +4,9 @@ import { detectContent } from '~/server/utils/detect-content'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<Partial<RequestSubmitGPT>>(event)
-  const content = detectContent(body)
+  const content = detectContent(body) as string
+  console.log('content', content)
+
   const stream = await OpenAI(
     'chat',
     {

@@ -1,0 +1,30 @@
+<script setup>
+import { advanced } from '~/constants/scripts'
+
+const publishSelected = usePublish()
+</script>
+
+<template>
+  <div>
+    <label class="mb-2 block text-sm text-secondary-500">Publish</label>
+    <div class="scrollbar-hide overflow-auto">
+      <ul class="flex flex-nowrap gap-2 text-sm">
+        <li v-for="where in advanced.publish" :key="where" class="flex-none">
+          <input
+            :id="where"
+            v-model="publishSelected"
+            type="radio"
+            :value="where"
+            class="peer !hidden"
+          >
+          <label
+            :for="where"
+            class="inline-flex w-full cursor-pointer items-center justify-between rounded-full border border-secondary-200 bg-white px-3 py-1.5 text-secondary-500 hover:bg-slate-50 hover:text-secondary-600 peer-checked:border-primary-600 peer-checked:text-primary-600"
+          >
+            <div class="block">{{ where }}</div>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>

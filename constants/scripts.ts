@@ -146,21 +146,34 @@ export const category = [
   {
     key: 1,
     name: 'Write',
+    placeholder: 'What do you want to write?',
   },
   {
     key: 2,
     name: 'Translate',
+    placeholder: 'What do you want to translate?',
   },
   {
     key: 3,
     name: 'Grammar',
+    placeholder: 'What do you want to check?',
   },
   {
     key: 4,
     name: 'Coding',
+    placeholder: 'What do you want to code?',
   },
   {
     key: 5,
     name: 'Wikipedia',
+    placeholder: 'What do you want to Wikipedia?',
   },
 ]
+
+export const language = ['Automatic', 'Việt nam', 'English', 'French', 'Spanish', 'Simplified Chinese', 'Traditional Chinese', 'Japanese', 'German', 'Russian', 'Arabic', 'Hindi', 'Portuguese', 'Italian', 'Korea', 'Dutch', 'Swedish', 'Norwegian', 'Danish', 'Finnish', 'Polish', 'Turkish', 'Indonesian', 'Malay']
+export const advanced = {
+  publish: ['Anywhere', 'Work', 'Email', 'Social Media'],
+  tone: ['Neutral', 'Formal', 'Friendly', 'Casual'],
+  format: ['Text', 'HTML', 'Markdown'],
+  length: ['Short', 'Medium', 'Long'],
+}

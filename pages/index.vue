@@ -2,15 +2,17 @@
 const generateText = ref('')
 const loaded = ref(false)
 
-const langSelected = useState('language')
-const publishSelected = useState('publish')
-const toneSelected = useState('tone')
-const formatSelected = useState('format')
-const lengthSelected = useState('length')
-const roleSelected = useState('role')
-const cateSelected = useState('category')
-const content = useState('content')
-const wantWrite = useState('want-write')
+const langSelected = useLanguage()
+const publishSelected = usePublish()
+const toneSelected = useTone()
+const formatSelected = useFormat()
+const lengthSelected = useLength()
+const roleSelected = useRole()
+const cateSelected = useCategory()
+const content = useTextContent()
+const wantWrite = useWantWrite()
+
+const isMarkdownContent = computed(() => formatSelected.value === 'Markdown')
 
 async function onGenerate() {
   loaded.value = true
@@ -61,7 +63,7 @@ async function onGenerate() {
   <div class="relative mx-auto mb-16 max-w-6xl md:mb-40">
     <span class="absolute -top-6 left-0" />
     <div class="rounded-xl border border-slate-200 bg-white shadow md:flex">
-      <MagicBox @generate="onGenerate">
+      <MagicBox>
         <template #action>
           <div class="flex items-center gap-4">
             <button
@@ -125,15 +127,20 @@ async function onGenerate() {
                 <div class="md-body">
                   <div class="markdown-body">
                     <ol>
-                      <li v-for="(text, i) in generateText.split('\n\n')" :key="i">
-                        <p>{{ text }}</p>
-                      </li>
+                      <template v-if="isMarkdownContent">
+                        <Markdown v-for="(text, i) in generateText.split('\n\n')" :key="i" :source="text" />
+                      </template>
+                      <template v-else>
+                        <li v-for="(text, i) in generateText.split('\n\n')" v-else :key="i">
+                          <p>{{ text }}</p>
+                        </li>
+                      </template>
                     </ol>
                   </div>
                 </div>
               </div>
             </div>
-            <ContentCommand v-if="!loaded" />
+            <ControlCommand v-if="!loaded" />
           </div>
         </div>
       </div>
