@@ -131,7 +131,7 @@ async function onGenerate() {
                         <Markdown v-for="(text, i) in generateText.split('\n\n')" :key="i" :source="text" />
                       </template>
                       <template v-else>
-                        <li v-for="(text, i) in generateText.split('\n\n')" v-else :key="i">
+                        <li v-for="(text, i) in generateText.split('\n\n')" :key="i">
                           <p>{{ text }}</p>
                         </li>
                       </template>
