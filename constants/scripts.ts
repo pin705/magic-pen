@@ -141,3 +141,26 @@ export const whatRole = [
   'dream interpreter',
   'tiktoker',
 ]
+
+export const category = [
+  {
+    key: 1,
+    name: 'Write',
+  },
+  {
+    key: 2,
+    name: 'Translate',
+  },
+  {
+    key: 3,
+    name: 'Grammar',
+  },
+  {
+    key: 4,
+    name: 'Coding',
+  },
+  {
+    key: 5,
+    name: 'Wikipedia',
+  },
+]

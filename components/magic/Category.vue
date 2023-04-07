@@ -1,23 +1,7 @@
 <script setup lang="ts">
+import { category } from '~/constants/scripts'
+
 const cateSelected = useState('category', () => 1)
-const category = [
-  {
-    key: 1,
-    name: 'Write',
-  },
-  {
-    key: 2,
-    name: 'Translate',
-  },
-  {
-    key: 3,
-    name: 'Grammar',
-  },
-  {
-    key: 4,
-    name: 'Coding',
-  },
-]
 </script>
 
 <template>
