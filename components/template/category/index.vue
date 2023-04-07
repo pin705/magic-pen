@@ -12,7 +12,7 @@ const { data: templates } = useFetch('/api/template/category?limit=12')
         <a v-for="tem in templates" :key="tem.id" href="/?template=1" class="group block h-full overflow-hidden rounded-xl border border-secondary-100 bg-white py-5 px-6 transition-all duration-300 nuxt-link-active" title="Article Writing">
           <div class="flex items-center gap-2">
             <div class="flex-none overflow-hidden rounded-lg border border-secondary-100 bg-white p-1">
-              <NuxtImg src="/images/icon57.png" class="h-6 w-6" />
+              <!--              <NuxtImg src="/images/icon57.png" class="h-6 w-6" /> -->
             </div>
             <h4 class="line-clamp-2 font-medium capitalize text-secondary-700 group-hover:text-primary-500">
               {{ tem.title }}

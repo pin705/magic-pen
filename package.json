@@ -16,6 +16,8 @@
     "@nuxtjs/tailwindcss": "^6.6.5",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "^18.15.11",
+    "@vueuse/nuxt": "^9.13.0",
     "eslint": "^8.37.0",
     "eventsource-parser": "^1.0.0",
     "nuxt": "^3.3.3",
