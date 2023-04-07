@@ -17,7 +17,10 @@ const conversionComponent = computed(() => {
   if (cate.value === 4)
     return resolveComponent('ConversionCoding')
 
-  return resolveComponent('ConversionWikipedia')
+  if (cate.value === 5)
+    return resolveComponent('ConversionWikipedia')
+
+  return resolveComponent('ConversionEmojiTranslator')
 })
 </script>
 

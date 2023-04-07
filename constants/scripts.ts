@@ -168,6 +168,11 @@ export const category = [
     name: 'Wikipedia',
     placeholder: 'What do you want to Wikipedia?',
   },
+  {
+    key: 6,
+    name: 'Emoji Translator',
+    placeholder: 'Hello, what is your profession?',
+  },
 ]
 
 export const language = ['Automatic', 'Việt nam', 'English', 'French', 'Spanish', 'Simplified Chinese', 'Traditional Chinese', 'Japanese', 'German', 'Russian', 'Arabic', 'Hindi', 'Portuguese', 'Italian', 'Korea', 'Dutch', 'Swedish', 'Norwegian', 'Danish', 'Finnish', 'Polish', 'Turkish', 'Indonesian', 'Malay']
