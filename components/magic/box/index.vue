@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { category, codingTaskOptions } from '~/constants/scripts'
+import { category, codingTaskOptions } from '~/constants'
 
 const cate = useCategory()
 const codeTask = useCodingOption()

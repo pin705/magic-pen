@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { category } from '~/constants/scripts'
+import { category } from '~/constants'
 
 const cateSelected = useCategory()
 </script>

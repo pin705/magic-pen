@@ -1,5 +1,5 @@
 <script setup>
-import { language } from '~/constants/scripts'
+import { language } from '~/constants'
 
 const langSelected = useLanguage()
 </script>

@@ -1,5 +1,5 @@
 <script setup>
-import { advanced } from '~/constants/scripts'
+import { advanced } from '~/constants'
 
 const toneSelected = useTone()
 </script>

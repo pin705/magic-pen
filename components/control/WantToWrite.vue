@@ -1,5 +1,5 @@
 <script setup>
-import { wantToWrite } from '~/constants/scripts'
+import { wantToWrite } from '~/constants'
 
 const target = ref(null)
 const showListWantToWrite = ref(false)

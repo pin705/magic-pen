@@ -1,3 +1,5 @@
+import type { CodeTask } from '~/types'
+
 export interface RequestSubmitGPT {
   category: number
   templateId: number
@@ -10,6 +12,6 @@ export interface RequestSubmitGPT {
   targetLang: string
   text: string
   explain: boolean
-  codeTask: string
+  codeTask: CodeTask
   wantWrite: string
 }

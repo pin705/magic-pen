@@ -1,5 +1,5 @@
 <script setup>
-import { advanced } from '~/constants/scripts'
+import { advanced } from '~/constants'
 
 const lengthSelected = useLength()
 </script>

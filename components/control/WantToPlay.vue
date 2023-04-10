@@ -1,6 +1,6 @@
 <script setup>
 import { useRole } from '~/composables/useRole'
-import { whatRole } from '~/constants/scripts'
+import { whatRole } from '~/constants'
 
 const roleSelected = useRole()
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { codingTaskOptions } from '~/constants/scripts'
+import { codingTaskOptions } from '~/constants'
 
 defineProps<{
   placeholder: string

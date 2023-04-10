@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { language } from '~/constants/scripts'
+import { language } from '~/constants'
 
 defineProps<{
   placeholder: string

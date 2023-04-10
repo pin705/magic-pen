@@ -1,3 +1,5 @@
+import type { CodeTask } from '~/types'
+
 export const wantToWrite = [
   'Article Writing',
   'Article Outline Writing',
@@ -183,7 +185,13 @@ export const advanced = {
   length: ['Short', 'Medium', 'Long'],
 }
 
-export const codingTaskOptions = [
+interface codingTaskOptionsType {
+  value: CodeTask
+  label: string
+  placeholder: string
+}
+
+export const codingTaskOptions: codingTaskOptionsType[] = [
   {
     value: 'fix-code',
     label: 'Fix Code',
@@ -208,5 +216,10 @@ export const codingTaskOptions = [
     value: 'add-commit-change',
     label: 'Commit Change',
     placeholder: 'Run git diff in project & and copy to here',
+  },
+  {
+    value: 'regex',
+    label: 'Regex Generator',
+    placeholder: 'Generate a regular expression that matches an email address.',
   },
 ]

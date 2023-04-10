@@ -1,4 +1,4 @@
-import { whatRole } from '~/constants/scripts'
+import { whatRole } from '~/constants'
 
 export function useRole() {
   return useState('role', () => whatRole[0])
