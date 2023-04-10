@@ -1,10 +1,9 @@
 import { OpenAI } from 'openai-streams/node'
 import type { RequestSubmitGPT } from '~/server/types'
-import { detectContent } from '~/server/utils/detect-content'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<Partial<RequestSubmitGPT>>(event)
-  const content = detectContent(body) as string
+  const content = scripts(body) as string
   console.log('content', content)
 
   const stream = await OpenAI(

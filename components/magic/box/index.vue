@@ -1,26 +1,37 @@
 <script setup lang="ts">
-import { category } from '~/constants/scripts'
+import { category, codingTaskOptions } from '~/constants/scripts'
 
 const cate = useCategory()
-const placeholder = computed(() => category.find(item => item.key === cate.value)?.placeholder as string)
+const codeTask = useCodingOption()
 
-const conversionComponent = computed(() => {
-  if (cate.value === 1)
-    return resolveComponent('ConversionWrite')
+const placeholder = computed(() => {
+  switch (cate.value) {
+    case 1:
+      return category.find(item => item.key === cate.value)?.placeholder as string
+    case 2:
+      return 'Translate something...'
+    case 3:
+      return 'Grammar something...'
+    case 4:
+      return codingTaskOptions.find(item => item.value === codeTask.value)?.placeholder as string
+    case 5:
+      return 'Wikipedia something...'
+  }
+})
 
-  if (cate.value === 2)
-    return resolveComponent('ConversionTranslate')
-
-  if (cate.value === 3)
-    return resolveComponent('ConversionGrammar')
-
-  if (cate.value === 4)
-    return resolveComponent('ConversionCoding')
-
-  if (cate.value === 5)
-    return resolveComponent('ConversionWikipedia')
-
-  return resolveComponent('ConversionEmojiTranslator')
+const conversionComponent: any = computed(() => {
+  switch (cate.value) {
+    case 1:
+      return resolveComponent('ConversionWrite')
+    case 2:
+      return resolveComponent('ConversionTranslate')
+    case 3:
+      return resolveComponent('ConversionGrammar')
+    case 4:
+      return resolveComponent('ConversionCoding')
+    case 5:
+      return resolveComponent('ConversionWikipedia')
+  }
 })
 </script>
 

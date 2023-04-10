@@ -11,6 +11,7 @@ const roleSelected = useRole()
 const cateSelected = useCategory()
 const content = useTextContent()
 const wantWrite = useWantWrite()
+const coding = useCodingOption()
 
 const isMarkdownContent = computed(() => formatSelected.value === 'Markdown')
 
@@ -31,7 +32,7 @@ async function onGenerate() {
     category: cateSelected.value,
     wantWrite: wantWrite.value,
     // explain: false,
-    // codeTask: 'fix',
+    codeTask: coding.value,
   }
 
   const completion = await fetch('/api/submitGPT', {
