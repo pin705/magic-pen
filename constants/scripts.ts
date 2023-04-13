@@ -172,7 +172,7 @@ export const category = [
   },
   // {
   //   key: 6,
-  //   name: 'Emoji Translator',
+  //   name: 'Teacher and Improver',
   //   placeholder: 'Hello, what is your profession?',
   // },
 ]
@@ -184,6 +184,13 @@ export const advanced = {
   format: ['Text', 'HTML', 'Markdown'],
   length: ['Short', 'Medium', 'Long'],
 }
+
+export const teacherAndImprover = [
+  {
+    value: 'spoken-english-teacher-and-improver',
+    label: 'Spoken English Teacher and Improver',
+  },
+]
 
 interface codingTaskOptionsType {
   value: CodeTask

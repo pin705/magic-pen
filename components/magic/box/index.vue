@@ -3,8 +3,25 @@ import { category, codingTaskOptions } from '~/constants'
 
 const cate = useCategory()
 const codeTask = useCodingOption()
+const template = ref(await useTemplate())
+const { $listen } = useNuxtApp()
 
-const placeholder = computed(() => {
+initialize()
+function initialize() {
+  useRole().value = template.value.prompt_user.role
+  usePlaceholder().value = template.value.prompt_user.placeholder
+}
+
+$listen('changeTemplate', async (id: string) => {
+  template.value = await useTemplate(id)
+  useRole().value = template.value.prompt_user.role
+})
+
+const wrapTemplate = computed(() => template.value)
+const buildPlaceholder = computed(() => {
+  if (template)
+    return wrapTemplate.value.prompt_user.placeholder
+
   switch (cate.value) {
     case 1:
       return category.find(item => item.key === cate.value)?.placeholder as string
@@ -19,6 +36,10 @@ const placeholder = computed(() => {
   }
 })
 
+watch(buildPlaceholder, () => {
+  usePlaceholder().value = buildPlaceholder.value
+})
+
 const conversionComponent: any = computed(() => {
   switch (cate.value) {
     case 1:
@@ -29,8 +50,10 @@ const conversionComponent: any = computed(() => {
       return resolveComponent('ConversionGrammar')
     case 4:
       return resolveComponent('ConversionCoding')
-    case 5:
-      return resolveComponent('ConversionWikipedia')
+    // case 5:
+    //   return resolveComponent('ConversionWikipedia')
+    // case 6:
+    //   return resolveComponent('ConversionTeacherAndImprover')
   }
 })
 </script>
@@ -40,7 +63,7 @@ const conversionComponent: any = computed(() => {
     <form class="space-y-6">
       <MagicCategory />
       <div class="space-y-6">
-        <component :is="conversionComponent" :placeholder="placeholder" />
+        <component :is="conversionComponent" :template="wrapTemplate" />
       </div>
       <slot name="action" />
     </form>

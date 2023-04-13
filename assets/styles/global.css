@@ -12,7 +12,7 @@ fieldset[disabled] .multiselect {
     width: 40px
 }
 
-.multiselect__spinner:after,.multiselect__spinner:before {
+.multiselect__spinner:after, .multiselect__spinner:before {
     border: 2px solid transparent;
     border-radius: 100%;
     border-top-color: #41b883;
@@ -27,25 +27,25 @@ fieldset[disabled] .multiselect {
 }
 
 .multiselect__spinner:before {
-    animation: spinning 2.4s cubic-bezier(.41,.26,.2,.62);
+    animation: spinning 2.4s cubic-bezier(.41, .26, .2, .62);
     animation-iteration-count: infinite
 }
 
 .multiselect__spinner:after {
-    animation: spinning 2.4s cubic-bezier(.51,.09,.21,.8);
+    animation: spinning 2.4s cubic-bezier(.51, .09, .21, .8);
     animation-iteration-count: infinite
 }
 
-.multiselect__loading-enter-active,.multiselect__loading-leave-active {
+.multiselect__loading-enter-active, .multiselect__loading-leave-active {
     opacity: 1;
     transition: opacity .4s ease-in-out
 }
 
-.multiselect__loading-enter,.multiselect__loading-leave-active {
+.multiselect__loading-enter, .multiselect__loading-leave-active {
     opacity: 0
 }
 
-.multiselect,.multiselect__input,.multiselect__single {
+.multiselect, .multiselect__input, .multiselect__single {
     font-family: inherit;
     font-size: 16px;
     touch-action: manipulation
@@ -79,7 +79,7 @@ fieldset[disabled] .multiselect {
     z-index: 50
 }
 
-.multiselect--active:not(.multiselect--above) .multiselect__current,.multiselect--active:not(.multiselect--above) .multiselect__input,.multiselect--active:not(.multiselect--above) .multiselect__tags {
+.multiselect--active:not(.multiselect--above) .multiselect__current, .multiselect--active:not(.multiselect--above) .multiselect__input, .multiselect--active:not(.multiselect--above) .multiselect__tags {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0
 }
@@ -88,12 +88,12 @@ fieldset[disabled] .multiselect {
     transform: rotate(180deg)
 }
 
-.multiselect--above.multiselect--active .multiselect__current,.multiselect--above.multiselect--active .multiselect__input,.multiselect--above.multiselect--active .multiselect__tags {
+.multiselect--above.multiselect--active .multiselect__current, .multiselect--above.multiselect--active .multiselect__input, .multiselect--above.multiselect--active .multiselect__tags {
     border-top-left-radius: 0;
     border-top-right-radius: 0
 }
 
-.multiselect__input,.multiselect__single {
+.multiselect__input, .multiselect__single {
     background: #fff;
     border: none;
     border-radius: 5px;
@@ -117,15 +117,15 @@ fieldset[disabled] .multiselect {
     color: #35495e
 }
 
-.multiselect__tag~.multiselect__input,.multiselect__tag~.multiselect__single {
+.multiselect__tag ~ .multiselect__input, .multiselect__tag ~ .multiselect__single {
     width: auto
 }
 
-.multiselect__input:hover,.multiselect__single:hover {
+.multiselect__input:hover, .multiselect__single:hover {
     border-color: #cfcfcf
 }
 
-.multiselect__input:focus,.multiselect__single:focus {
+.multiselect__input:focus, .multiselect__single:focus {
     border-color: #a8a8a8;
     outline: none
 }
@@ -187,11 +187,11 @@ fieldset[disabled] .multiselect {
     font-size: 14px
 }
 
-.multiselect__tag-icon:focus,.multiselect__tag-icon:hover {
+.multiselect__tag-icon:focus, .multiselect__tag-icon:hover {
     background: #369a6e
 }
 
-.multiselect__tag-icon:focus:after,.multiselect__tag-icon:hover:after {
+.multiselect__tag-icon:focus:after, .multiselect__tag-icon:hover:after {
     color: #fff
 }
 
@@ -204,7 +204,7 @@ fieldset[disabled] .multiselect {
     white-space: nowrap
 }
 
-.multiselect__current,.multiselect__select {
+.multiselect__current, .multiselect__select {
     box-sizing: border-box;
     cursor: pointer;
     display: block;
@@ -349,14 +349,14 @@ fieldset[disabled] .multiselect {
     content: attr(data-deselect)
 }
 
-.multiselect--disabled .multiselect__current,.multiselect--disabled .multiselect__select {
+.multiselect--disabled .multiselect__current, .multiselect--disabled .multiselect__select {
     background: #ededed;
     color: #a6a6a6
 }
 
 .multiselect__option--disabled {
-    background: #ededed!important;
-    color: #a6a6a6!important;
+    background: #ededed !important;
+    color: #a6a6a6 !important;
     cursor: text;
     pointer-events: none
 }
@@ -390,11 +390,11 @@ fieldset[disabled] .multiselect {
     content: attr(data-deselect)
 }
 
-.multiselect-enter-active,.multiselect-leave-active {
+.multiselect-enter-active, .multiselect-leave-active {
     transition: all .15s ease
 }
 
-.multiselect-enter,.multiselect-leave-active {
+.multiselect-enter, .multiselect-leave-active {
     opacity: 0
 }
 
@@ -448,8 +448,8 @@ fieldset[disabled] .multiselect {
 }
 
 .multiselect__option--group {
-    background: #fafafa!important;
-    color: #334155!important;
+    background: #fafafa !important;
+    color: #334155 !important;
     font-weight: 500;
     text-transform: capitalize
 }
@@ -458,7 +458,7 @@ fieldset[disabled] .multiselect {
     background-color: #a78bfa
 }
 
-.multiselect__option,.multiselect__single {
+.multiselect__option, .multiselect__single {
     font-size: 14px
 }
 
@@ -507,11 +507,11 @@ fieldset[disabled] .multiselect {
     padding-right: 12px
 }
 
-.multiselect__content-wrapper,.multiselect__tags {
-    --tw-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+.multiselect__content-wrapper, .multiselect__tags {
+    --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
     --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-    box-shadow: 0 0 transparent,0 0 transparent,0 1px 2px 0 rgba(0,0,0,.05);
-    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+    box-shadow: 0 0 transparent, 0 0 transparent, 0 1px 2px 0 rgba(0, 0, 0, .05);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 
 .multiselect__content-wrapper {
@@ -519,8 +519,8 @@ fieldset[disabled] .multiselect {
     border-bottom-right-radius: 6px
 }
 
-.multiselect__input:focus,.multiselect__single:focus {
-    box-shadow: none!important;
+.multiselect__input:focus, .multiselect__single:focus {
+    box-shadow: none !important;
     font-size: 14px;
     margin: 0;
     padding: 0
@@ -537,7 +537,6 @@ fieldset[disabled] .multiselect {
     color: #8b5cf6;
     font-weight: 600
 }
-
 
 
 select {
@@ -561,7 +560,7 @@ select {
     print-color-adjust: inherit
 }
 
-[type=checkbox],[type=radio] {
+[type=checkbox], [type=radio] {
     --tw-shadow: 0 0 transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -592,20 +591,20 @@ select {
     border-radius: 100%
 }
 
-[type=checkbox]:focus,[type=radio]:focus {
-    --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+[type=checkbox]:focus, [type=radio]:focus {
+    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
     --tw-ring-offset-width: 2px;
     --tw-ring-offset-color: #fff;
     --tw-ring-color: #2563eb;
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-    box-shadow: 0 0 0 2px #fff,0 0 0 4px #2563eb,var(--tw-shadow);
-    box-shadow: var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2563eb, var(--tw-shadow);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     outline: 2px solid transparent;
     outline-offset: 2px
 }
 
-[type=checkbox]:checked,[type=radio]:checked {
+[type=checkbox]:checked, [type=radio]:checked {
     background-color: currentColor;
     background-position: 50%;
     background-repeat: no-repeat;
@@ -621,7 +620,7 @@ select {
     background-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTYgMTYnIGZpbGw9JyNmZmYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PGNpcmNsZSBjeD0nOCcgY3k9JzgnIHI9JzMnLz48L3N2Zz4=)
 }
 
-[type=checkbox]:checked:focus,[type=checkbox]:checked:hover,[type=radio]:checked:focus,[type=radio]:checked:hover {
+[type=checkbox]:checked:focus, [type=checkbox]:checked:hover, [type=radio]:checked:focus, [type=radio]:checked:hover {
     background-color: currentColor;
     border-color: transparent
 }
@@ -635,7 +634,7 @@ select {
     border-color: transparent
 }
 
-[type=checkbox]:indeterminate:focus,[type=checkbox]:indeterminate:hover {
+[type=checkbox]:indeterminate:focus, [type=checkbox]:indeterminate:hover {
     background-color: currentColor;
     border-color: transparent
 }
@@ -655,3 +654,73 @@ select {
     outline: 1px solid ButtonText;
     outline: 1px auto -webkit-focus-ring-color
 }
+
+.grid-bg {
+    top: 102%
+}
+
+.grid-bg, .grid-bg:after {
+    left: 0;
+    position: absolute;
+    width: 100%
+}
+
+.grid-bg:after {
+    -webkit-backface-visibility: hidden;
+    -webkit-background-clip: content-box;
+    background-image: linear-gradient(90deg, #8b5cf6 1px, transparent 0), linear-gradient(180deg, #8b5cf6 1px, transparent 0);
+    background-position: bottom;
+    background-size: 100px 50px;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 100vh;
+    -webkit-mask-image: -webkit-gradient(linear, left 90%, left top, from(#000), to(transparent));
+    outline: 1px solid transparent;
+    padding: 1px;
+    right: 0;
+    transform: perspective(400px) rotateX(40deg) scaleX(2) translateZ(0);
+    transform-origin: bottom center;
+    will-change: transform
+}
+
+.slogan:hover .anything {
+    -webkit-text-fill-color: transparent;
+    animation: text-gradient 2s linear infinite;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg, #fb7185, #d946ef, #6366f1, #d946ef, #fb7185), linear-gradient(90deg, #fb7185, #d946ef, #6366f1, #d946ef, #fb7185);
+    background-size: 200% 100%
+}
+
+@keyframes text-gradient {
+    0% {
+        background-position: 0 0
+    }
+    to {
+        background-position: 200% 0
+    }
+}
+
+.typed-element {
+    justify-content: center
+}
+
+@media (max-width: 768px) {
+    .grid-bg {
+        top: 85%
+    }
+
+    .typed-element {
+        justify-content: flex-start
+    }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+

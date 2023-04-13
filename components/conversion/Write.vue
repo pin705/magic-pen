@@ -1,12 +1,18 @@
 <script setup lang="ts">
+import type { Template } from '~/types'
+
 defineProps<{
-  placeholder: string
+  template: Template
 }>()
+
 const content = useTextContent()
+function useExample() {
+  content.value = usePlaceholder().value
+}
 </script>
 
 <template>
-  <ControlWantToWrite />
+  <ControlWantToWrite :template="template" />
   <ControlWantToPlay />
   <div>
     <label for="label5" class="mb-3 block text-sm text-secondary-500">Tell about your subject</label>
@@ -15,6 +21,7 @@ const content = useTextContent()
         <button
           type="button"
           class="group z-10 absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md bg-white/70 text-secondary-500 transition-all hover:border hover:border-secondary-100 hover:bg-white hover:text-primary-600 hover:shadow-sm"
+          @click.stop="useExample"
         >
           <span
             class="invisible absolute -top-6 min-w-[40px] rounded-md bg-black bg-opacity-70 px-2 py-1 text-xs text-white opacity-0 transition-all duration-300 group-hover:visible group-hover:-top-7 group-hover:opacity-100"
@@ -31,7 +38,8 @@ const content = useTextContent()
         >
           <textarea
             v-model="content"
-            rows="7" :placeholder="placeholder"
+            rows="7"
+            :placeholder="usePlaceholder().value ? usePlaceholder().value : 'You subject.'"
             data-aicontext="Help continue writing the topic"
             class="block w-full rounded-md border-secondary-300 text-sm shadow-sm placeholder:text-secondary-400 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-secondary-50"
           />

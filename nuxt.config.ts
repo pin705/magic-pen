@@ -1,4 +1,14 @@
 export default defineNuxtConfig({
+  vite: {
+    plugins: [
+
+    ],
+  },
+  nitro: {
+    plugins: [
+      '~/server/index.ts',
+    ],
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image-edge',
@@ -16,6 +26,9 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'icon', type: 'image/svg+xml', href: '/logo.png' },
+      ],
+      script: [
+        { src: 'https://app.lemonsqueezy.com/js/lemon.js', defer: true },
       ],
       meta: [
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },

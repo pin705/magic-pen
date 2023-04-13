@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useState } from '#app'
+import TextGenerate from '~/components/TextGenerate.vue'
+
 const generateText = ref('')
-const loaded = ref(false)
+const loaded = useState('loaded', () => false)
+const contentGeneratedFinish = useState('content-generate-finish', () => false)
 
 const langSelected = useLanguage()
 const publishSelected = usePublish()
@@ -14,13 +18,13 @@ const wantWrite = useWantWrite()
 const coding = useCodingOption()
 
 const isMarkdownContent = computed(() => formatSelected.value === 'Markdown')
+const isTeacherImprover = computed(() => cateSelected.value === 6)
 
 async function onGenerate() {
   loaded.value = true
+  contentGeneratedFinish.value = false
   generateText.value = ''
   const payload = {
-    // category: 1,
-    // templateId: 4,
     where: publishSelected.value,
     role: roleSelected.value,
     tone: toneSelected.value,
@@ -30,12 +34,12 @@ async function onGenerate() {
     targetLang: langSelected.value,
     text: content.value,
     category: cateSelected.value,
-    wantWrite: wantWrite.value,
+    templateId: wantWrite.value.id,
     // explain: false,
     codeTask: coding.value,
   }
 
-  const completion = await fetch('/api/submitGPT', {
+  const completion = await fetch('/api/v1', {
     method: 'POST',
     body: JSON.stringify(payload),
   })
@@ -56,12 +60,12 @@ async function onGenerate() {
   }
 
   loaded.value = false
+  contentGeneratedFinish.value = true
 }
 </script>
 
 <template>
-  <PageHeader />
-  <div class="relative mx-auto mb-16 max-w-6xl md:mb-40">
+  <div id="master-box" class="mx-auto mb-16 max-w-6xl md:mb-40">
     <span class="absolute -top-6 left-0" />
     <div class="rounded-xl border border-slate-200 bg-white shadow md:flex">
       <MagicBox>
@@ -76,7 +80,7 @@ async function onGenerate() {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="mx-auto h-5 w-5 animate-spin text-white"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25" /> <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" class="opacity-75" /></svg>
               </div>
               <div v-else>
-                Generate
+                {{ isTeacherImprover ? 'Start' : 'Generate' }}
               </div>
             </button>
             <!--            <a -->
@@ -87,22 +91,23 @@ async function onGenerate() {
             <!--            </a> -->
           </div>
           <div class="flex items-center justify-between gap-2 text-sm text-secondary-500">
-            <div class="flex items-center justify-between gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg" width="1em"
-                height="1em" viewBox="0 0 256 256"
-              >
-                <rect x="0" y="0" width="256" height="256" fill="none" stroke="none" />
-                <path
-                  fill="currentColor" d="M232 104c0 24-40 48-104 48S24 128 24 104s40-48 104-48s104 24 104 48Z"
-                  opacity=".2"
-                />
-                <path
-                  fill="currentColor"
-                  d="M207.6 63.8C186.8 53.5 159.3 48 128 48s-58.8 5.5-79.6 15.8S16 88.8 16 104v48c0 15.2 11.8 29.9 32.4 40.2S96.7 208 128 208s58.8-5.5 79.6-15.8s32.4-25 32.4-40.2v-48c0-15.2-11.8-29.9-32.4-40.2ZM128 64c62.6 0 96 23.2 96 40c0 9.9-11.7 22.2-34.4 30.5h-.3c-15.5 5.6-36 9.4-61.3 9.4s-45.8-3.8-61.3-9.4h-.3C43.7 126.2 32 113.9 32 104c0-16.8 33.4-40 96-40Zm-8 95.9v32c-19-.7-35-3.5-48-7.5V153c14.3 4 30.5 6.3 48 6.9Zm16 0c17.5-.6 33.7-2.9 48-6.9v31.4c-13 4-29 6.8-48 7.5ZM32 152v-18.5a84.5 84.5 0 0 0 16.4 10.7l7.6 3.4V178c-15.8-7.8-24-17.7-24-26Zm168 26v-30.4l7.6-3.4a84.5 84.5 0 0 0 16.4-10.7V152c0 8.3-8.2 18.2-24 26Z"
-                />
-              </svg> <span>1 credits left!</span>
-            </div>
+            <!--            <div class="flex items-center justify-between gap-2"> -->
+            <!--              <svg -->
+            <!--                xmlns="http://www.w3.org/2000/svg" width="1em" -->
+            <!--                height="1em" viewBox="0 0 256 256" -->
+            <!--              > -->
+            <!--                <rect x="0" y="0" width="256" height="256" fill="none" stroke="none" /> -->
+            <!--                <path -->
+            <!--                  fill="currentColor" d="M232 104c0 24-40 48-104 48S24 128 24 104s40-48 104-48s104 24 104 48Z" -->
+            <!--                  opacity=".2" -->
+            <!--                /> -->
+            <!--                <path -->
+            <!--                  fill="currentColor" -->
+            <!--                  d="M207.6 63.8C186.8 53.5 159.3 48 128 48s-58.8 5.5-79.6 15.8S16 88.8 16 104v48c0 15.2 11.8 29.9 32.4 40.2S96.7 208 128 208s58.8-5.5 79.6-15.8s32.4-25 32.4-40.2v-48c0-15.2-11.8-29.9-32.4-40.2ZM128 64c62.6 0 96 23.2 96 40c0 9.9-11.7 22.2-34.4 30.5h-.3c-15.5 5.6-36 9.4-61.3 9.4s-45.8-3.8-61.3-9.4h-.3C43.7 126.2 32 113.9 32 104c0-16.8 33.4-40 96-40Zm-8 95.9v32c-19-.7-35-3.5-48-7.5V153c14.3 4 30.5 6.3 48 6.9Zm16 0c17.5-.6 33.7-2.9 48-6.9v31.4c-13 4-29 6.8-48 7.5ZM32 152v-18.5a84.5 84.5 0 0 0 16.4 10.7l7.6 3.4V178c-15.8-7.8-24-17.7-24-26Zm168 26v-30.4l7.6-3.4a84.5 84.5 0 0 0 16.4-10.7V152c0 8.3-8.2 18.2-24 26Z" -->
+            <!--                /> -->
+            <!--              </svg> -->
+            <!--              <span>1 credits left!</span> -->
+            <!--            </div> -->
             <!--            <div> -->
             <!--              <div class="flex justify-center"> -->
             <!--                <a class="cursor-pointer hover:text-primary-500 hover:underline">Apply -->
@@ -114,38 +119,13 @@ async function onGenerate() {
       </MagicBox>
       <div class="mt-5 flex-1 border-t border-t-slate-100 px-5 py-5 md:mt-0 md:min-h-[640px] md:border-0 md:py-10">
         <div class="mx-auto max-w-xl">
-          <article v-if="!generateText">
-            <div>
-              <div class="my-10 text-center text-base text-secondary-400 md:mt-36">
-                <!--                <NuxtImg src="/images/typewriter.png" alt="" class="mx-auto w-80 pb-10" /> -->
-                Don’t wait, just do it.
-              </div>
-            </div>
-          </article>
-          <div v-else class="relative pb-12">
-            <div class="md:max-h-[calc(100vh-120px)] md:overflow-scroll">
-              <div class="prose">
-                <div class="md-body">
-                  <div class="markdown-body">
-                    <ol>
-                      <template v-if="isMarkdownContent">
-                        <Markdown v-for="(text, i) in generateText.split('\n\n')" :key="i" :source="text" />
-                      </template>
-                      <template v-else>
-                        <li v-for="(text, i) in generateText.split('\n\n')" :key="i">
-                          <p>{{ text }}</p>
-                        </li>
-                      </template>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <ControlCommand v-if="!loaded" />
-          </div>
+          <TextGenerate
+            :loaded="loaded"
+            :is-markdown-content="isMarkdownContent"
+            :generate-text="generateText"
+          />
         </div>
       </div>
     </div>
-    <TemplateCategory />
   </div>
 </template>

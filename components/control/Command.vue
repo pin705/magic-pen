@@ -3,7 +3,7 @@ const tooltip = ref(false)
 async function copyText() {
   // Get the text field
   const text = document.getElementsByClassName('markdown-body')[0]
-  await navigator.clipboard.writeText(text.textContent)
+  await navigator.clipboard.writeText(text.textContent ?? '')
   tooltip.value = true
 
   setTimeout(() => {

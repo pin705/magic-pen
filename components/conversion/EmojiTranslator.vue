@@ -1,15 +1,11 @@
 <script lang="ts" setup>
 import { language } from '~/constants'
 
-defineProps<{
-  placeholder: string
-}>()
-
 const languageSelected = useLanguage()
 </script>
 
 <template>
-  <TextArea :placeholder="placeholder" rows="15" />
+  <TextArea :placeholder="usePlaceholder().value" rows="15" />
   <div>
     <label for="targetLang" class="mb-3 block text-sm text-secondary-500">Select target language</label>
     <div class="my-3">

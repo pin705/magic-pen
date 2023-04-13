@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useRole } from '~/composables/useRole'
 import { whatRole } from '~/constants'
 

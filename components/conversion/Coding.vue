@@ -1,15 +1,11 @@
 <script lang="ts" setup>
 import { codingTaskOptions } from '~/constants'
 
-defineProps<{
-  placeholder: string
-}>()
-
 const value = useCodingOption()
 </script>
 
 <template>
-  <TextArea :placeholder="placeholder" rows="15" />
+  <TextArea :placeholder="usePlaceholder().value" rows="15" />
   <div>
     <label for="task" class="mb-3 block text-sm text-secondary-500">What can I do for you?</label>
     <div class="my-3">
