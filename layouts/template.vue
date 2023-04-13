@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <Body class="bg-slate-50 antialiased [font-feature-settings:'ss01']">
+  <Body class="bg-white-50 antialiased">
     <div class="absolute inset-x-0 top-0 z-0 h-[400px]" />
     <div class="absolute inset-x-0 top-0 z-0 h-[400px] overflow-hidden opacity-10">
       <section class="grid-bg" />

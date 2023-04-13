@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const words = [
   'emails',
   'blogs',
@@ -10,6 +10,7 @@ const words = [
   'profile bio',
   'story plots',
 ]
+
 let part = null
 let i = 0
 let offset = 0
@@ -18,9 +19,10 @@ let forwards = true
 let skip_count = 0
 const skip_delay = 15
 const speed = 100
+const timer = ref(null)
 
 onMounted(() => {
-  setInterval(() => {
+  timer.value = setInterval(() => {
     if (forwards) {
       if (offset >= words[i].length) {
         ++skip_count
@@ -39,6 +41,7 @@ onMounted(() => {
           i = 0
       }
     }
+
     part = words[i].substr(0, offset)
     if (skip_count === 0) {
       if (forwards)
@@ -50,6 +53,10 @@ onMounted(() => {
 
     document.querySelector('.word').textContent = part
   }, speed)
+})
+
+onUnmounted(() => {
+  clearInterval(timer.value)
 })
 </script>
 

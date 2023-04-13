@@ -70,7 +70,7 @@ async function onGenerate() {
   <!--  </div> -->
   <div id="master-box" class="mx-auto mb-16 max-w-6xl md:mb-40">
     <span class="absolute -top-6 left-0" />
-    <div class="rounded-xl md:flex mt-2">
+    <div class="rounded-xl md:flex mt-2 border border-slate-100">
       <MagicBox>
         <template #action>
           <div class="flex items-center gap-4">
