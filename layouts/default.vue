@@ -17,6 +17,7 @@
       <PageFeatures />
       <PagePricing />
       <PageFaq />
+      <PageFooter />
     </div>
   </Body>
 </template>

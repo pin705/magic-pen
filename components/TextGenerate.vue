@@ -12,7 +12,7 @@ defineProps<{
       <div class="text-center">
         <div class="lf-w-full lf-relative vue-lottie-player" style="width: 100%; height: 300px;">
           <div style="all: inherit;">
-            <Vue3Lottie
+            <Lottie
               autoplay="true"
               animation-link="/pen.json"
               :speed="1"

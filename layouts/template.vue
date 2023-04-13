@@ -12,6 +12,7 @@
       <div class="relative">
         <slot />
       </div>
+      <PageFooter />
     </div>
   </Body>
 </template>

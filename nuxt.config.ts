@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      feedbackURL: process.env.FEEDBACK_URL,
+    },
+  },
   vite: {
     plugins: [
 
