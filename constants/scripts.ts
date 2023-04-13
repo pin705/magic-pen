@@ -165,11 +165,11 @@ export const category = [
     name: 'Coding',
     placeholder: 'What do you want to code?',
   },
-  {
-    key: 5,
-    name: 'Wikipedia',
-    placeholder: 'What do you want to Wikipedia?',
-  },
+  // {
+  //   key: 5,
+  //   name: 'Wikipedia',
+  //   placeholder: 'What do you want to Wikipedia?',
+  // },
   // {
   //   key: 6,
   //   name: 'Teacher and Improver',

@@ -724,3 +724,74 @@ select {
     scrollbar-width: none
 }
 
+.font-display {
+    font-family: Lexend, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, segoe ui, helvetica neue, Arial, noto sans, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji
+}
+
+body {
+    font-family: "Nunito",sans-serif;
+}
+
+.gradients {
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: -1;
+}
+
+.gradients .circle.orange {
+    background: radial-gradient(50% 50% at 50% 50%,rgba(255,61,0,.15) 0,hsla(0,0%,100%,0) 100%);
+    left: -27rem;
+    top: -20rem;
+}
+
+.gradients .circle {
+    height: 35rem;
+    width: 35rem;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.gradients .circle.purple {
+    background: radial-gradient(50% 50% at 50% 50%,rgba(101,31,255,.15) 0,hsla(0,0%,100%,0) 100%);
+    right: -27rem;
+    top: -20rem;
+}
+
+.gradients .circle.yellow {
+    background: radial-gradient(50% 50% at 50% 50%,rgba(255,213,79,.2) 0,hsla(0,0%,100%,0) 100%);
+    left: auto;
+    right: auto;
+    bottom: -25rem;
+}
+
+.gradientsSection {
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: -1;
+}
+
+.gradientsSection .circle {
+    height: 40rem;
+    width: 40rem;
+    position: absolute;
+    border-radius: 50%;
+    top: -7rem
+}
+
+.gradientsSection .circle.orange {
+    background: radial-gradient(50% 50% at 50% 50%,rgba(255,61,0,.1) 0,hsla(0,0%,100%,0) 100%)
+}
+
+.gradientsSection .circle.purple {
+    background: radial-gradient(50% 50% at 50% 50%,rgba(101,31,255,.1) 0,hsla(0,0%,100%,0) 100%)
+}
+
+.gradientsSection .circle.yellow {
+    background: radial-gradient(50% 50% at 50% 50%,rgba(255,213,79,.1) 0,hsla(0,0%,100%,0) 100%)
+}

@@ -9,11 +9,20 @@ export default defineNuxtConfig({
       '~/server/index.ts',
     ],
   },
+  googleFonts: {
+    families: {
+      Nunito: {
+        wght: [100, 400],
+        ital: [100],
+      },
+    },
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image-edge',
     '@vueuse/nuxt',
     '@vite-pwa/nuxt',
+    '@nuxtjs/google-fonts',
   ],
   css: ['@/assets/styles/global.css'],
   app: {
@@ -25,7 +34,7 @@ export default defineNuxtConfig({
       },
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/logo.png' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
       ],
       script: [
         { src: 'https://app.lemonsqueezy.com/js/lemon.js', defer: true },

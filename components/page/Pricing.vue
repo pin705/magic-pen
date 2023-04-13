@@ -116,7 +116,7 @@ const pricings = [
     >
       <li v-for="pricing in pricings" :key="pricing.name" :class="pricing.class">
         <header>
-          <h3 class="font-display text-xl font-medium capitalize">
+          <h3 class="font-display text-xl font-medium capitalize" :class="{ 'text-primary-600': isPro(pricing.name) }">
             {{ pricing.name }}
           </h3>
           <h4
