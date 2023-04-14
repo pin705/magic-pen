@@ -12,16 +12,18 @@ defineProps<{
       <div class="text-center">
         <div class="lf-w-full lf-relative vue-lottie-player" style="width: 100%; height: 300px;">
           <div style="all: inherit;">
-            <Lottie
-              autoplay="true"
-              animation-link="/pen.json"
-              :speed="1"
-              mode="normal"
-              loop=""
-              style="height: 100%;
+            <ClientOnly>
+              <Vue3Lottie
+                autoplay="true"
+                animation-link="/pen.json"
+                :speed="1"
+                mode="normal"
+                loop=""
+                style="height: 100%;
               background: transparent;"
-              background="transparent"
-            />
+                background="transparent"
+              />
+            </ClientOnly>
           </div>
         </div> <div class="text-secondary-400">
           Magic is being cast, Please wait ...

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const feedbackURL = useRuntimeConfig().feedbackURL
+const config = useAppConfig()
 const postGroup = [
   {
     postTitle: 'What is Dytr?',
@@ -89,7 +89,7 @@ const postGroup = [
       </div>
       <p class="text-center text-sm text-secondary-400 mt-6">
         Something we didn't cover? We're happy to have <a
-          :href="feedbackURL"
+          :href="config.feedbackURL"
           class=" underline underline-offset-2 hover:text-primary-500"
           target="_blank"
         >feedback</a>.
