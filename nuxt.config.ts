@@ -1,4 +1,15 @@
 export default defineNuxtConfig({
+  vite: {
+    server: {
+      proxy: {
+        '/api': {
+          target: 'https://api.dyrt.me/',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, ''),
+        },
+      },
+    },
+  },
   runtimeConfig: {
     public: {
       feedbackURL: process.env.FEEDBACK_URL,
