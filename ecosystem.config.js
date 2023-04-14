@@ -4,6 +4,8 @@ module.exports = {
       name: 'Dyrt',
       script: '.output/server/index.mjs',
       watch: true,
+      exec_mode: 'cluster', // fork or cluster
+      instances: 'max', // Or a number of instances
       env: {
         PORT: 3000,
         NODE_ENV: 'development',
