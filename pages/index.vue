@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useState } from '#app'
-import TextGenerate from '~/components/TextGenerate.vue'
 
 const generateText = ref('')
 const loaded = useState('loaded', () => false)
@@ -47,16 +46,19 @@ async function onGenerate() {
 
   if (!completion.body)
     return
+
   const data = completion.body
+  console.log('data', data)
 
   const reader = data.getReader()
   const decoder = new TextDecoder()
   let done = false
 
   while (!done) {
-    const { value, done: doneReading } = await reader.read()
+    const { value, done: doneReading }: any = await reader.read()
     done = doneReading
     const chunkValue = decoder.decode(value)
+    console.log('chunkValue', chunkValue)
     generateText.value += chunkValue
   }
 
@@ -66,9 +68,6 @@ async function onGenerate() {
 </script>
 
 <template>
-  <!--  <div class="gradientsSection"> -->
-  <!--    <div class="circle orange" /> -->
-  <!--  </div> -->
   <div id="master-box" class="mx-auto mb-16 max-w-6xl md:mb-40">
     <span class="absolute -top-6 left-0" />
     <div class="rounded-xl md:flex mt-2 border border-slate-100">
@@ -87,47 +86,48 @@ async function onGenerate() {
                 {{ isTeacherImprover ? 'Start' : 'Generate' }}
               </div>
             </button>
-            <!--            <a -->
-            <!--              href="https://magickpen.lemonsqueezy.com/checkout/buy/b00f9189-7054-42a7-84e9-510f38fe5a31" -->
-            <!--              class="rounded-lg border border-primary-500 bg-transparent px-4 py-2.5 text-center text-sm font-medium text-primary-500 shadow-sm transition-all hover:border-primary-700 hover:bg-primary-50 focus:ring focus:ring-primary-200 disabled:cursor-not-allowed disabled:border-primary-300 disabled:bg-primary-300" -->
-            <!--            > -->
-            <!--              Buy Credits -->
-            <!--            </a> -->
+            <a
+              class="rounded-lg border border-primary-500 bg-transparent px-4 py-2.5 text-center text-sm font-medium text-primary-500 shadow-sm transition-all hover:border-primary-700 hover:bg-primary-50 focus:ring focus:ring-primary-200 disabled:cursor-not-allowed disabled:border-primary-300 disabled:bg-primary-300"
+            >
+              Buy Credits
+            </a>
           </div>
           <div class="flex items-center justify-between gap-2 text-sm text-secondary-500">
-            <!--            <div class="flex items-center justify-between gap-2"> -->
-            <!--              <svg -->
-            <!--                xmlns="http://www.w3.org/2000/svg" width="1em" -->
-            <!--                height="1em" viewBox="0 0 256 256" -->
-            <!--              > -->
-            <!--                <rect x="0" y="0" width="256" height="256" fill="none" stroke="none" /> -->
-            <!--                <path -->
-            <!--                  fill="currentColor" d="M232 104c0 24-40 48-104 48S24 128 24 104s40-48 104-48s104 24 104 48Z" -->
-            <!--                  opacity=".2" -->
-            <!--                /> -->
-            <!--                <path -->
-            <!--                  fill="currentColor" -->
-            <!--                  d="M207.6 63.8C186.8 53.5 159.3 48 128 48s-58.8 5.5-79.6 15.8S16 88.8 16 104v48c0 15.2 11.8 29.9 32.4 40.2S96.7 208 128 208s58.8-5.5 79.6-15.8s32.4-25 32.4-40.2v-48c0-15.2-11.8-29.9-32.4-40.2ZM128 64c62.6 0 96 23.2 96 40c0 9.9-11.7 22.2-34.4 30.5h-.3c-15.5 5.6-36 9.4-61.3 9.4s-45.8-3.8-61.3-9.4h-.3C43.7 126.2 32 113.9 32 104c0-16.8 33.4-40 96-40Zm-8 95.9v32c-19-.7-35-3.5-48-7.5V153c14.3 4 30.5 6.3 48 6.9Zm16 0c17.5-.6 33.7-2.9 48-6.9v31.4c-13 4-29 6.8-48 7.5ZM32 152v-18.5a84.5 84.5 0 0 0 16.4 10.7l7.6 3.4V178c-15.8-7.8-24-17.7-24-26Zm168 26v-30.4l7.6-3.4a84.5 84.5 0 0 0 16.4-10.7V152c0 8.3-8.2 18.2-24 26Z" -->
-            <!--                /> -->
-            <!--              </svg> -->
-            <!--              <span>1 credits left!</span> -->
-            <!--            </div> -->
-            <!--            <div> -->
-            <!--              <div class="flex justify-center"> -->
-            <!--                <a class="cursor-pointer hover:text-primary-500 hover:underline">Apply -->
-            <!--                  Credits</a> -->
-            <!--              </div> -->
-            <!--            </div> -->
+            <div class="flex items-center justify-between gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg" width="1em"
+                height="1em" viewBox="0 0 256 256"
+              >
+                <rect x="0" y="0" width="256" height="256" fill="none" stroke="none" />
+                <path
+                  fill="currentColor" d="M232 104c0 24-40 48-104 48S24 128 24 104s40-48 104-48s104 24 104 48Z"
+                  opacity=".2"
+                />
+                <path
+                  fill="currentColor"
+                  d="M207.6 63.8C186.8 53.5 159.3 48 128 48s-58.8 5.5-79.6 15.8S16 88.8 16 104v48c0 15.2 11.8 29.9 32.4 40.2S96.7 208 128 208s58.8-5.5 79.6-15.8s32.4-25 32.4-40.2v-48c0-15.2-11.8-29.9-32.4-40.2ZM128 64c62.6 0 96 23.2 96 40c0 9.9-11.7 22.2-34.4 30.5h-.3c-15.5 5.6-36 9.4-61.3 9.4s-45.8-3.8-61.3-9.4h-.3C43.7 126.2 32 113.9 32 104c0-16.8 33.4-40 96-40Zm-8 95.9v32c-19-.7-35-3.5-48-7.5V153c14.3 4 30.5 6.3 48 6.9Zm16 0c17.5-.6 33.7-2.9 48-6.9v31.4c-13 4-29 6.8-48 7.5ZM32 152v-18.5a84.5 84.5 0 0 0 16.4 10.7l7.6 3.4V178c-15.8-7.8-24-17.7-24-26Zm168 26v-30.4l7.6-3.4a84.5 84.5 0 0 0 16.4-10.7V152c0 8.3-8.2 18.2-24 26Z"
+                />
+              </svg>
+              <span>1 credits left!</span>
+            </div>
+            <div>
+              <div class="flex justify-center">
+                <a class="cursor-pointer hover:text-primary-500 hover:underline">Apply
+                  Credits</a>
+              </div>
+            </div>
           </div>
         </template>
       </MagicBox>
       <div class="mt-5 flex-1 border-t border-t-slate-100 px-5 py-5 md:mt-0 md:min-h-[640px] md:border-0 md:py-10">
         <div class="mx-auto max-w-xl">
-          <TextGenerate
-            :loaded="loaded"
-            :is-markdown-content="isMarkdownContent"
-            :generate-text="generateText"
-          />
+          <ClientOnly>
+            <TextGenerate
+              :loaded="loaded"
+              :is-markdown-content="isMarkdownContent"
+              :generate-text="generateText"
+            />
+          </ClientOnly>
         </div>
       </div>
     </div>

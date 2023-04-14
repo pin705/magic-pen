@@ -4,6 +4,8 @@ import { prompts } from '~/server/utils/prompt'
 import { templateSchema } from '~/server/schema'
 
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig()
+
   const body = await readBody<Partial<RequestSubmitGPT>>(event)
   const content = prompts(body)
   if (body.templateId) {
@@ -15,7 +17,7 @@ export default defineEventHandler(async (event) => {
   }
 
   console.log('content', content)
-  console.log('API KEY: ', process.env.OPEN_AI_API_KEY)
+  console.log('API KEY: ', config.OPEN_API_KEY)
 
   const stream = await OpenAI(
     'chat',
@@ -27,7 +29,7 @@ export default defineEventHandler(async (event) => {
       stream: true,
     },
     {
-      apiKey: process.env.OPEN_AI_API_KEY,
+      apiKey: config.OPEN_API_KEY,
     },
   )
 

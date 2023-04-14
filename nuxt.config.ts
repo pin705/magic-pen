@@ -3,8 +3,11 @@ export default defineNuxtConfig({
     public: {
       feedbackURL: process.env.FEEDBACK_URL,
     },
+    MONGO_URL: process.env.MONGO_URL,
+    OPEN_API_KEY: process.env.OPEN_AI_API_KEY,
   },
   nitro: {
+    preset: 'node-server',
     plugins: [
       '~/server/index.ts',
     ],
