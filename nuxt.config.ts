@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
     '@kevinmarrec/nuxt-pwa',
+    'nuxt-security',
   ],
   css: ['@/assets/styles/global.css'],
   app: {
@@ -48,6 +49,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  security: {},
   pwa: {
     manifest: {
       name: 'Dyrt',
