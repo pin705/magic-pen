@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   }
 
   console.log('content', content)
-  const API_KEY = atob(process.env.OPEN_AI_API_KEY as string)
+  const API_KEY = process.env.OPEN_AI_API_KEY
   console.log('API KEY: ', API_KEY)
 
   const stream = await OpenAI(
