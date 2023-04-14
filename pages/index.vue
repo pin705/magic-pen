@@ -35,6 +35,7 @@ async function onGenerate() {
     text: content.value,
     category: cateSelected.value,
     templateId: wantWrite.value.id,
+    wantWrite: wantWrite.value.title,
     // explain: false,
     codeTask: coding.value,
   }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const config = useAppConfig()
+const config = useRuntimeConfig()
 const postGroup = [
   {
     postTitle: 'What is Dytr?',
@@ -41,10 +41,10 @@ const postGroup = [
         + '\n'
         + 'For high-usage customers, our subscription accounts provide a $29/month billing plan, which is the most cost-effective option and comes with 3000 credits. Subscription only supports credit card payments.',
   },
-  {
-    postTitle: 'Need more free credits to try Dytr?',
-    postDescription: 'Get 10 free credits by tweeting about us with our link (https://magickpen.com/) and mentioning our Twitter handle @GetDytr!',
-  },
+  // {
+  //   postTitle: 'Need more free credits to try Dytr?',
+  //   postDescription: 'Get 10 free credits by tweeting about us with our link (https://magickpen.com/) and mentioning our Twitter handle @GetDytr!',
+  // },
   {
     postTitle: 'Can I request a refund?',
     postDescription: 'In the event that your credit usage is less than 10% of your purchased credits, contact us at hi@magickpen.com within 30 days for a full refund.\n'
@@ -89,7 +89,7 @@ const postGroup = [
       </div>
       <p class="text-center text-sm text-secondary-400 mt-6">
         Something we didn't cover? We're happy to have <a
-          :href="config.feedbackURL"
+          :href="config.public.feedbackURL"
           class=" underline underline-offset-2 hover:text-primary-500"
           target="_blank"
         >feedback</a>.

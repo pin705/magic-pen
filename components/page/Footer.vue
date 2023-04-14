@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const config = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>
@@ -37,7 +38,7 @@ const config = useAppConfig()
           </h3>
           <ul class="space-y-2 mt-4">
             <li>
-              <a :href="config.feedbackURL" target="_black" class="hover:text-primary-500">Feedback</a>
+              <a :href="runtimeConfig.public.feedbackURL" target="_black" class="hover:text-primary-500">Feedback</a>
             </li>
             <!--            <li> -->
             <!--              <a -->

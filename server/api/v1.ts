@@ -14,6 +14,8 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  console.log('body', body)
+  console.log('content', content)
   const stream = await OpenAI(
     'chat',
     {

@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      feedbackURL: process.env.FEEDBACK_URL,
+    },
+  },
   nitro: {
     plugins: [
       '~/server/index.ts',

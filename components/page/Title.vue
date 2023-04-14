@@ -77,7 +77,7 @@ onUnmounted(() => {
         Write Anything <br>
         in Seconds
       </div>
-      <div class="word text-primary-400 min-h-[52px]" />
+      <div class="word text-primary-400 min-h-[52px] lg:min-h-[66px] transition-all duration-700" />
     </h1>
     <p class="mt-4 text-left text-lg text-secondary-400 md:text-center flex-none max-w-[42rem]">
       Dytr is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!
