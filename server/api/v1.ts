@@ -15,7 +15,9 @@ export default defineEventHandler(async (event) => {
   }
 
   console.log('content', content)
-  console.log('API KEY: ', process.env.OPEN_AI_API_KEY)
+  const API_KEY = atob(process.env.OPEN_AI_API_KEY as string)
+  console.log('API KEY: ', API_KEY)
+
   const stream = await OpenAI(
     'chat',
     {
@@ -26,7 +28,7 @@ export default defineEventHandler(async (event) => {
       stream: true,
     },
     {
-      apiKey: process.env.OPEN_AI_API_KEY,
+      apiKey: API_KEY,
     },
   )
 
