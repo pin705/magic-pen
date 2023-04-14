@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.4",
+    "@kevinmarrec/nuxt-pwa": "^0.17.0",
     "@nuxt/image-edge": "^1.0.0-28008586.381b906",
     "@nuxtjs/google-fonts": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.6.5",
