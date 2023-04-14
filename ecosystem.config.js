@@ -14,7 +14,7 @@ module.exports = {
       env_production: {
         PORT: 3000,
         NODE_ENV: 'production',
-        OPEN_AI_API_KEY: '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',
+        OPEN_AI_API_KEY: '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',
         MONGO_URL: 'mongodb+srv://cuongnd:jBtjX9WYuM4WGzdZ@cluster0.ptgdomn.mongodb.net/master-pen',
         FEEDBACK_URL: 'https://dytr.canny.io/feedback',
       },
