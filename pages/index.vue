@@ -39,15 +39,14 @@ async function onGenerate() {
     codeTask: coding.value,
   }
 
-  const completion = await fetch('/api/v1', {
+  const completion = await $fetch('/api/v1', {
     method: 'POST',
     body: JSON.stringify(payload),
+    responseType: 'stream',
   })
 
-  if (!completion.body)
-    return
-
-  const data = completion.body
+  console.log('completion', completion)
+  const data = completion
   console.log('data', data)
 
   const reader = data.getReader()
@@ -58,13 +57,16 @@ async function onGenerate() {
     const { value, done: doneReading }: any = await reader.read()
     done = doneReading
     const chunkValue = decoder.decode(value)
-    console.log('chunkValue', chunkValue)
     generateText.value += chunkValue
   }
 
   loaded.value = false
   contentGeneratedFinish.value = true
 }
+
+// watch(generateText, () => {
+//   document.getElementById('messages').scrollIntoView()
+// })
 </script>
 
 <template>

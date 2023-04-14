@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <article v-if="!generateText">
+  <article v-show="!generateText">
     <div v-if="loaded" class="animate-pulse">
       <div class="text-center">
         <div class="lf-w-full lf-relative vue-lottie-player" style="width: 100%; height: 300px;">
@@ -37,8 +37,8 @@ defineProps<{
       </div>
     </div>
   </article>
-  <div v-else class="relative pb-12">
-    <div class="md:max-h-[calc(100vh-120px)] md:overflow-scroll">
+  <div v-show="generateText" class="relative pb-12">
+    <div id="messages" class="md:max-h-[calc(100vh-120px)] md:overflow-scroll">
       <div class="prose">
         <div class="md-body">
           <div class="markdown-body">
