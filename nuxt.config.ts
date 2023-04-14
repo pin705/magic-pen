@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     '@nuxt/image-edge',
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
-    // '@kevinmarrec/nuxt-pwa',
+    '@kevinmarrec/nuxt-pwa',
   ],
   css: ['@/assets/styles/global.css'],
   app: {
@@ -48,22 +48,22 @@ export default defineNuxtConfig({
       ],
     },
   },
-  // pwa: {
-  //   manifest: {
-  //     name: 'Dyrt',
-  //     short_name: 'Dyrt',
-  //     start_url: '/',
-  //     lang: 'en',
-  //   },
-  //   meta: {
-  //     title: 'Dyrt - Best AI Writer, Content Generator & Writing Assistant',
-  //     favicon: true,
-  //     theme_color: '#FFFFFF',
-  //     mobileApp: true,
-  //     mobileAppIOS: true,
-  //     author: 'Dyrt',
-  //     ogSiteName: 'Dyrt',
-  //     description: 'Write Anything in seconds just like Magick. Powered by AI, let me be your intelligent writing assistant.',
-  //   },
-  // },
+  pwa: {
+    manifest: {
+      name: 'Dyrt',
+      short_name: 'Dyrt',
+      start_url: '/',
+      lang: 'en',
+    },
+    meta: {
+      title: 'Dyrt - Best AI Writer, Content Generator & Writing Assistant',
+      favicon: true,
+      theme_color: '#FFFFFF',
+      mobileApp: true,
+      mobileAppIOS: true,
+      author: 'Dyrt',
+      ogSiteName: 'Dyrt',
+      description: 'Write Anything in seconds just like Magick. Powered by AI, let me be your intelligent writing assistant.',
+    },
+  },
 })
