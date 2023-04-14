@@ -10,7 +10,7 @@ const runtimeConfig = useRuntimeConfig()
         <a
           href="/"
           class="inline-flex items-center text-secondary-700 hover:text-primary-500 transition-colors gap-2 text-lg md:text-xl font-bold nuxt-link-active"
-        ><img src="/logo.png" alt="" class="h-6 w-6">
+        ><img src="/logo.svg" alt="" class="h-6 w-6">
           {{ config.siteName }}
         </a>
         <p class="mt-2">

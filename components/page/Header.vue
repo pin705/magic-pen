@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const config = useAppConfig()
 const menu = [
   {
     name: 'Templates',
@@ -11,7 +12,7 @@ const menu = [
     new: false,
   },
   {
-    name: 'Start Dytr',
+    name: `Start ${config.siteName}`,
     link: '/',
     icon: 'arrow-right',
     new: false,
@@ -24,7 +25,7 @@ const menu = [
     <div class="flex items-center justify-between pt-5 w-[1024px]">
       <a href="/" class="inline-flex items-center gap-2 text-lg md:text-2xl font-bold nuxt-link-active font-extrabold">
         <img src="/logo.svg" alt="" class="h-6 w-6 md:h-10 md:w-10">
-        Dytr
+        {{ config.siteName }}
       </a>
       <ul class="hidden gap-10 font-display text-[15px] font-medium text-secondary-700 md:flex header-menu">
         <li v-for="m in menu" :key="m.name">

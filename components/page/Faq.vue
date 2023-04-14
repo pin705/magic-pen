@@ -1,15 +1,14 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
+const appConfig = useAppConfig()
 const postGroup = [
   {
-    postTitle: 'What is Dytr?',
-    postDescription: 'Dytr, an AI-powered writing tool, unleashes the full potential of GPT-3, generating articles, papers,\n'
-            + '            reports, stories, ads, and jokes with ease. It also includes translation, grammar check, and code repair\n'
-            + '            functions to enhance your writing capabilities.',
+    postTitle: `What is ${appConfig.siteName}?`,
+    postDescription: `${appConfig.siteName}, an AI-powered writing tool, unleashes the full potential of GPT-3, generating articles, papers, reports, stories, ads, and jokes with ease. It also includes translation, grammar check, and code repair functions to enhance your writing capabilities.`,
   },
   {
     postTitle: 'Is this app free?',
-    postDescription: 'Dytr provides 10 trial credits per week for free accounts, which can be used without logging in. To obtain more credits, you can purchase a Pro or Subscription account.\n',
+    postDescription: `${appConfig.siteName} provides 10 trial credits per week for free accounts, which can be used without logging in. To obtain more credits, you can purchase a Pro or Subscription account.`,
   },
   {
     postTitle: 'What\'s the difference between free and paid accounts?',
@@ -23,17 +22,15 @@ const postGroup = [
   },
   {
     postTitle: 'Do students get education discounts?',
-    postDescription: 'Yes! If you\'re a student or teacher with an edu email, email us at hi@magickpen.com to receive a 40% education discount code.',
+    postDescription: 'Yes! If you\'re a student or teacher with an edu email, email us at ... to receive a 40% education discount code.',
   },
   {
     postTitle: 'How can I login and use my credits?',
-    postDescription: 'Once you purchase credits, you\'ll be redirected to account validation and login. If not, or if you need to use credits on a different device, you can validate your account manually: How do I use credits in Dytr?',
+    postDescription: `Once you purchase credits, you'll be redirected to account validation and login. If not, or if you need to use credits on a different device, you can validate your account manually: How do I use credits in ${appConfig.siteName}?`,
   },
   {
-    postTitle: 'How can I use Dytr effectively?',
-    postDescription: 'Dytr is easy to use. Just choose the type of writing, role, and topic, and receive great content in seconds. Advanced settings allow customization of language, tone, length, and format.\n'
-        + '\n'
-        + 'For more precise results, please provide a detailed topic description. If needed, our <a href="/?template=2" class="text-primary-500 hover:opacity-80">Article Outline Writing</a> tool can assist you.',
+    postTitle: `How can I use ${appConfig.siteName} effectively?`,
+    postDescription: `${appConfig.siteName} is easy to use. Just choose the type of writing, role, and topic, and receive great content in seconds. Advanced settings allow customization of language, tone, length, and format. For more precise results, please provide a detailed topic description. If needed, our <a href="/?template=2" class="text-primary-500 hover:opacity-80">Article Outline Writing</a> tool can assist you.`,
   },
   {
     postTitle: 'What\'s the difference between Pro and Subscription accounts?',
@@ -41,13 +38,9 @@ const postGroup = [
         + '\n'
         + 'For high-usage customers, our subscription accounts provide a $29/month billing plan, which is the most cost-effective option and comes with 3000 credits. Subscription only supports credit card payments.',
   },
-  // {
-  //   postTitle: 'Need more free credits to try Dytr?',
-  //   postDescription: 'Get 10 free credits by tweeting about us with our link (https://magickpen.com/) and mentioning our Twitter handle @GetDytr!',
-  // },
   {
     postTitle: 'Can I request a refund?',
-    postDescription: 'In the event that your credit usage is less than 10% of your purchased credits, contact us at hi@magickpen.com within 30 days for a full refund.\n'
+    postDescription: 'In the event that your credit usage is less than 10% of your purchased credits, contact us at ... within 30 days for a full refund.\n'
         + '\n'
         + 'Additionally, subscription users have access to a 3-day free trial.',
   },

@@ -1,4 +1,4 @@
 export default defineAppConfig({
-  siteName: 'Dytr',
-  siteURL: '',
+  siteName: 'Dyrt',
+  siteURL: 'https://dyrt.me/',
 })

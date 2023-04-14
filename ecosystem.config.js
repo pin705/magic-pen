@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Dytr',
+      name: 'Dyrt',
       script: '.output/server/index.mjs',
       watch: true,
       env: {
