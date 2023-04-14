@@ -5,6 +5,9 @@ import { templateSchema } from '~/server/schema'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
+  setResponseHeaders(event, {
+    'content-type': 'application/octet-stream',
+  })
 
   const body = await readBody<Partial<RequestSubmitGPT>>(event)
   const content = prompts(body)
