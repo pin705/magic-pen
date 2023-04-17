@@ -1,15 +1,14 @@
 export default defineNuxtConfig({
-  vite: {
-    server: {
-      proxy: {
-        '/api': {
-          target: 'https://api.dyrt.me/',
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, ''),
-        },
-      },
-    },
-  },
+  // vite: {
+  //   server: {
+  //     proxy: {
+  //       '/proxy/magic': {
+  //         target: 'http://localhost:3005/api/magic',
+  //         changeOrigin: true,
+  //       },
+  //     },
+  //   },
+  // },
   runtimeConfig: {
     public: {
       feedbackURL: process.env.FEEDBACK_URL,
@@ -18,6 +17,11 @@ export default defineNuxtConfig({
     OPEN_API_KEY: process.env.OPEN_AI_API_KEY,
   },
   nitro: {
+    routeRules: {
+      '/api/magic': {
+        proxy: 'http://localhost:3005/api/magic',
+      },
+    },
     preset: 'node-server',
     plugins: [
       '~/server/index.ts',

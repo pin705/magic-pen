@@ -39,7 +39,7 @@ async function onGenerate() {
     codeTask: coding.value,
   }
 
-  const completion = await $fetch('/api/v1', {
+  const completion = await $fetch('https://api.dyrt.me/magic', {
     method: 'POST',
     body: JSON.stringify(payload),
     responseType: 'stream',
