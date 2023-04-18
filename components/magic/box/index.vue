@@ -36,8 +36,7 @@ const buildPlaceholder = computed(() => {
   }
 })
 
-watch((buildPlaceholder, cate, codingTask), () => {
-  console.log('buildPlaceholder.value', buildPlaceholder.value)
+watch([buildPlaceholder, cate, codingTask], () => {
   usePlaceholder().value = buildPlaceholder.value
 })
 
