@@ -7,6 +7,8 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   setResponseHeaders(event, {
     'content-type': 'application/octet-stream',
+    'Cache-Control': 'no-cache',
+    'X-Accel-Buffering': 'no',
   })
 
   const body = await readBody<Partial<RequestSubmitGPT>>(event)
