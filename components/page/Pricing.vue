@@ -112,7 +112,7 @@ const pricings = [
       Choose your plan
     </h2>
     <ul
-      class="grid grid-cols-3 mx-auto mt-16 items-end justify-center gap-8 space-y-8 text-slate-700 lg:flex lg:space-y-0 xl:max-w-none"
+      class="grid-cols-1 grid  mx-auto mt-16 items-end justify-center gap-8 space-y-8 text-slate-700 lg:flex lg:space-y-0 xl:max-w-none"
     >
       <li v-for="pricing in pricings" :key="pricing.name" :class="pricing.class">
         <header>
