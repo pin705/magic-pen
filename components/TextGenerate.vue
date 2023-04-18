@@ -42,16 +42,14 @@ defineProps<{
       <div class="prose">
         <div class="md-body">
           <div class="markdown-body">
-            <ol>
-              <template v-if="isMarkdownContent">
-                <Markdown v-for="(text, i) in generateText.split('\n\n')" :key="i" :source="text" />
-              </template>
-              <template v-else>
-                <li v-for="(text, i) in generateText.split('\n\n')" :key="i">
-                  <p>{{ text }}</p>
-                </li>
-              </template>
-            </ol>
+            <template v-if="isMarkdownContent">
+              <Markdown v-for="(text, i) in generateText.split('\n\n')" :key="i" :source="text" />
+            </template>
+            <template v-else>
+              <p v-for="(text, i) in generateText.split('\n\n')" :key="i">
+                {{ text }}
+              </p>
+            </template>
           </div>
         </div>
       </div>

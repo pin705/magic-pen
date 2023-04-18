@@ -5,6 +5,7 @@ const cate = useCategory()
 const codeTask = useCodingOption()
 const template = ref(await useTemplate())
 const { $listen } = useNuxtApp()
+const codingTask = useCodingOption()
 
 initialize()
 function initialize() {
@@ -19,11 +20,10 @@ $listen('changeTemplate', async (id: string) => {
 
 const wrapTemplate = computed(() => template.value)
 const buildPlaceholder = computed(() => {
-  if (template)
-    return wrapTemplate.value.prompt_user.placeholder
-
   switch (cate.value) {
     case 1:
+      if (template.value)
+        return wrapTemplate.value.prompt_user.placeholder
       return category.find(item => item.key === cate.value)?.placeholder as string
     case 2:
       return 'Translate something...'
@@ -36,7 +36,8 @@ const buildPlaceholder = computed(() => {
   }
 })
 
-watch(buildPlaceholder, () => {
+watch((buildPlaceholder, cate, codingTask), () => {
+  console.log('buildPlaceholder.value', buildPlaceholder.value)
   usePlaceholder().value = buildPlaceholder.value
 })
 
@@ -50,10 +51,6 @@ const conversionComponent: any = computed(() => {
       return resolveComponent('ConversionGrammar')
     case 4:
       return resolveComponent('ConversionCoding')
-    // case 5:
-    //   return resolveComponent('ConversionWikipedia')
-    // case 6:
-    //   return resolveComponent('ConversionTeacherAndImprover')
   }
 })
 </script>

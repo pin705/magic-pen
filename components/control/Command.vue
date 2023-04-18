@@ -1,10 +1,38 @@
 <script setup lang="ts">
 const tooltip = ref(false)
-async function copyText() {
-  // Get the text field
+// async function copyText() {
+//   // Get the text field
+//   const text = document.getElementsByClassName('markdown-body')[0]
+//   await navigator.clipboard.writeText(text.textContent ?? '')
+//   tooltip.value = true
+//
+//   setTimeout(() => {
+//     tooltip.value = false
+//   }, 2000)
+// }
+
+function copyText() {
+  const doc = document
   const text = document.getElementsByClassName('markdown-body')[0]
-  await navigator.clipboard.writeText(text.textContent ?? '')
-  tooltip.value = true
+  let range
+  let selection
+
+  if (doc.body.createTextRange) {
+    range = doc.body.createTextRange()
+    range.moveToElementText(text)
+    range.select()
+  }
+
+  else if (window.getSelection) {
+    selection = window.getSelection()
+    range = doc.createRange()
+    range.selectNodeContents(text)
+    selection.removeAllRanges()
+    selection.addRange(range)
+  }
+
+  document.execCommand('copy')
+  window.getSelection().removeAllRanges()
 
   setTimeout(() => {
     tooltip.value = false

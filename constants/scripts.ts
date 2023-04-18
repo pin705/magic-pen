@@ -200,24 +200,14 @@ interface codingTaskOptionsType {
 
 export const codingTaskOptions: codingTaskOptionsType[] = [
   {
-    value: 'fix-code',
-    label: 'Fix Code',
-    placeholder: '',
-  },
-  {
-    value: 'better',
-    label: 'Make Better',
-    placeholder: '',
-  },
-  {
-    value: 'add-comment',
-    label: 'Add Comment',
-    placeholder: '',
+    value: 'refactor_code',
+    label: 'Refactor Code',
+    placeholder: 'Type your code here',
   },
   {
     value: 'explain',
-    label: 'Explain',
-    placeholder: '',
+    label: 'Explain Code',
+    placeholder: 'Type your code here',
   },
   {
     value: 'add-commit-change',

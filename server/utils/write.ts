@@ -6,9 +6,9 @@ export function writeScripts(request: Partial<RequestSubmitGPT>) {
     My first sentence is "${request.text}".
     I need you following criteria:
     Publish: ${request.where}
-    Text intonation ${request.tone}
-    Size content ${request.length}
-    Returned content is ${request.format}
-    Language: ${request.lang}
+    Right text style [${request.tone}]
+    Right text length [${request.length}]
+    The text you return should be [${request.format}]
+    the language you return should be [${request.lang}]
     `
 }
