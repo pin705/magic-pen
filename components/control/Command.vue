@@ -1,17 +1,7 @@
 <script setup lang="ts">
 const tooltip = ref(false)
-// async function copyText() {
-//   // Get the text field
-//   const text = document.getElementsByClassName('markdown-body')[0]
-//   await navigator.clipboard.writeText(text.textContent ?? '')
-//   tooltip.value = true
-//
-//   setTimeout(() => {
-//     tooltip.value = false
-//   }, 2000)
-// }
-
 function copyText() {
+  tooltip.value = true
   const doc = document
   const text = document.getElementsByClassName('markdown-body')[0]
   let range
