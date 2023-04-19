@@ -65,7 +65,7 @@ async function onGenerate() {
 }
 
 // watch(generateText, () => {
-//   document.getElementById('messages').scrollIntoView()
+//   document.getElementById('messages').scrollIntoView({ behavior: 'smooth', block: 'end' })
 // })
 </script>
 

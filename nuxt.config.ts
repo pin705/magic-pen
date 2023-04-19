@@ -42,6 +42,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@kevinmarrec/nuxt-pwa',
     'nuxt-security',
+    'nuxt-gtag',
   ],
   css: ['@/assets/styles/global.css'],
   app: {
@@ -65,6 +66,9 @@ export default defineNuxtConfig({
     },
   },
   security: {},
+  gtag: {
+    id: 'G-86S6KJ2B6L',
+  },
   pwa: {
     manifest: {
       name: 'Dyrt',
