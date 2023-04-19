@@ -39,8 +39,8 @@ const pricings = [
       'Limit to 1,000 words per generation',
     ],
     buttonClass: 'block rounded-lg border border-primary-500 bg-transparent px-4 py-2.5 text-center text-sm font-medium text-primary-500 shadow-sm transition-colors hover:border-primary-700 hover:bg-primary-50 focus:ring focus:ring-primary-200 disabled:cursor-not-allowed disabled:border-primary-300 disabled:bg-primary-300',
-    buttonText: 'Get started',
-    link: '/#master-box',
+    buttonText: 'Coming soon',
+    link: '#',
     credit: [],
   },
   {
@@ -53,8 +53,8 @@ const pricings = [
       '1v1 Customer Service',
     ],
     buttonClass: 'block rounded-lg border border-primary-500 bg-primary-500 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-colors hover:border-primary-700 hover:bg-primary-700 focus:ring focus:ring-primary-200 disabled:cursor-not-allowed disabled:border-primary-500 disabled:bg-primary-500',
-    buttonText: 'Upgrade now',
-    link: 'https://masterpen.lemonsqueezy.com/checkout/buy/d6c012d2-476f-4475-ad78-95f0eddbe116',
+    buttonText: 'Coming soon',
+    link: '#',
     credit: [
       {
         name: '100 Credits',
@@ -84,8 +84,8 @@ const pricings = [
       'Free trial for 3 days',
     ],
     buttonClass: 'block rounded-lg border border-primary-500 bg-transparent px-4 py-2.5 text-center text-sm font-medium text-primary-500 shadow-sm transition-colors hover:border-primary-700 hover:bg-primary-50 focus:ring focus:ring-primary-200 disabled:cursor-not-allowed disabled:border-primary-300 disabled:bg-primary-300',
-    buttonText: 'Start Free Trial',
-    link: 'https://masterpen.lemonsqueezy.com/checkout/buy/d6c012d2-476f-4475-ad78-95f0eddbe116',
+    buttonText: 'Coming soon',
+    link: '#',
     credit: [
       {
         name: '3000 Credits',
