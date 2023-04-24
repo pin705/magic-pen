@@ -1,14 +1,4 @@
 export default defineNuxtConfig({
-  // vite: {
-  //   server: {
-  //     proxy: {
-  //       '/proxy/magic': {
-  //         target: 'http://localhost:3005/api/magic',
-  //         changeOrigin: true,
-  //       },
-  //     },
-  //   },
-  // },
   runtimeConfig: {
     public: {
       feedbackURL: process.env.FEEDBACK_URL,
@@ -56,6 +46,13 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+      ],
+      script: [
+        {
+          async: true,
+          src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4792331156669817',
+          crossorigin: 'anonymous',
+        },
       ],
       meta: [
         {
