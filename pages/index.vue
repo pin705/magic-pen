@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalStorage } from '@vueuse/core'
 import { useState } from '#app'
 
 const generateText = ref('')
@@ -15,9 +16,62 @@ const cateSelected = useCategory()
 const content = useTextContent()
 const wantWrite = useWantWrite()
 const coding = useCodingOption()
+const creditPopup = ref(false)
+const licenseKey = ref('')
 
 const isMarkdownContent = computed(() => formatSelected.value === 'Markdown')
 const isTeacherImprover = computed(() => cateSelected.value === 6)
+const licenseKeys = ref([])
+
+const credits = ref(0)
+
+function applyCredit() {
+  creditPopup.value = true
+}
+
+function cancel() {
+  creditPopup.value = false
+}
+
+async function activeLicense(notify: boolean) {
+  if (!licenseKey.value)
+    licenseKey.value = licenseKeys.value[0].replace('LICENSE-', '')
+
+  // creditPopup.value = false
+  try {
+    const response = await $fetch('api/licenses/active', {
+      method: 'POST',
+      body: {
+        license_key: licenseKey.value,
+      },
+    })
+
+    if (response.status) {
+      if (notify)
+        alert('Active license success')
+
+      const storage = useLocalStorage(response.data.key, response.data.activationUsage)
+      licenseKeys.value = [response.data.key]
+      storage.value = response.data.activationUsage
+      credits.value = response.data.activationUsage
+      return
+    }
+  }
+  catch (e) {
+    if (notify)
+      alert('Active license fail')
+  }
+}
+
+onMounted(() => {
+  for (let i = 0; i < localStorage.length; i++) {
+    if (localStorage.key(i)?.startsWith('LICENSE'))
+      licenseKeys.value.push(localStorage.key(i))
+  }
+
+  credits.value = useLocalStorage(licenseKeys.value[0]).value
+  activeLicense(false)
+})
 
 async function onGenerate() {
   loaded.value = true
@@ -37,6 +91,7 @@ async function onGenerate() {
     wantWrite: wantWrite.value.title,
     // explain: false,
     codeTask: coding.value,
+    licenseKeys: licenseKeys.value,
   }
 
   const completion = await $fetch('/api/v1', {
@@ -45,9 +100,7 @@ async function onGenerate() {
     responseType: 'stream',
   })
 
-  console.log('completion', completion)
   const data = completion
-  console.log('data', data)
 
   const reader = data.getReader()
   const decoder = new TextDecoder()
@@ -62,14 +115,59 @@ async function onGenerate() {
 
   loaded.value = false
   contentGeneratedFinish.value = true
+  await activeLicense(false)
 }
-
-// watch(generateText, () => {
-//   document.getElementById('messages').scrollIntoView({ behavior: 'smooth', block: 'end' })
-// })
 </script>
 
 <template>
+  <Teleport to="body">
+    <div v-if="creditPopup" class="fixed inset-0 z-10 bg-secondary-700/50" />
+    <div v-if="creditPopup" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0 bg-[#969ea]">
+      <div class="bg-white mx-auto overflow-hidden rounded-lg shadow-xl sm:w-full sm:max-w-xl">
+        <div class="relative p-6">
+          <button
+            type="button"
+            class="absolute top-4 right-4 rounded-lg p-1 text-center font-medium text-secondary-500 transition-all hover:bg-secondary-100"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6">
+              <path
+                d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+              />
+            </svg>
+          </button>
+          <h3 class="text-lg font-medium text-secondary-900">
+            Activate License
+          </h3>
+          <div class="mt-2 text-secondary-500">
+            <p class="leading-normal">
+              To activate your credits, simply enter the license key we have sent to your email. If you haven't credits,
+              you can buy them
+              <a
+                href="https://magickpen.lemonsqueezy.com/checkout/buy/b00f9189-7054-42a7-84e9-510f38fe5a31"
+                target="_black" rel="noopener norefferer"
+                class="border-b border-b-secondary-900 text-secondary-900 hover:border-primary-700 hover:text-primary-700"
+              >here</a>.
+            </p>
+            <div class="mt-5">
+              <input
+                v-model="licenseKey"
+                type="text" placeholder="Your License Key"
+                class="block w-full rounded-md border-secondary-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-secondary-50 disabled:text-secondary-500"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 bg-secondary-50 px-6 py-3">
+          <button type="button" class="rounded-lg border border-secondary-300 bg-white px-4 py-2 text-center text-sm font-medium text-secondary-700 shadow-sm transition-all hover:bg-secondary-100 focus:ring focus:ring-secondary-100 disabled:cursor-not-allowed disabled:border-secondary-100 disabled:bg-secondary-50 disabled:text-secondary-400" @click.stop="cancel">
+            Cancel
+          </button>
+          <button type="button" class="rounded-lg border border-primary-500 bg-primary-500 px-4 py-2 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-primary-700 hover:bg-primary-700 focus:ring focus:ring-primary-200 disabled:cursor-not-allowed disabled:border-primary-300 disabled:bg-primary-300" @click.stop="activeLicense(true)">
+            <span>Apply Credits</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </Teleport>
   <div id="master-box" class="mx-auto mb-16 max-w-6xl md:mb-40">
     <span class="absolute -top-6 left-0" />
     <div class="rounded-xl md:flex mt-2 border border-slate-100">
@@ -82,7 +180,17 @@ async function onGenerate() {
               @click="onGenerate"
             >
               <div v-if="loaded" class="flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="mx-auto h-5 w-5 animate-spin text-white"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25" /> <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" class="opacity-75" /></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  class="mx-auto h-5 w-5 animate-spin text-white"
+                >
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25" />
+                  <path
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    class="opacity-75"
+                  />
+                </svg>
               </div>
               <div v-else>
                 {{ isTeacherImprover ? 'Start' : 'Generate' }}
@@ -111,12 +219,12 @@ async function onGenerate() {
                   d="M207.6 63.8C186.8 53.5 159.3 48 128 48s-58.8 5.5-79.6 15.8S16 88.8 16 104v48c0 15.2 11.8 29.9 32.4 40.2S96.7 208 128 208s58.8-5.5 79.6-15.8s32.4-25 32.4-40.2v-48c0-15.2-11.8-29.9-32.4-40.2ZM128 64c62.6 0 96 23.2 96 40c0 9.9-11.7 22.2-34.4 30.5h-.3c-15.5 5.6-36 9.4-61.3 9.4s-45.8-3.8-61.3-9.4h-.3C43.7 126.2 32 113.9 32 104c0-16.8 33.4-40 96-40Zm-8 95.9v32c-19-.7-35-3.5-48-7.5V153c14.3 4 30.5 6.3 48 6.9Zm16 0c17.5-.6 33.7-2.9 48-6.9v31.4c-13 4-29 6.8-48 7.5ZM32 152v-18.5a84.5 84.5 0 0 0 16.4 10.7l7.6 3.4V178c-15.8-7.8-24-17.7-24-26Zm168 26v-30.4l7.6-3.4a84.5 84.5 0 0 0 16.4-10.7V152c0 8.3-8.2 18.2-24 26Z"
                 />
               </svg>
-              <span>Are free!</span>
+              <span>{{ credits }} credits left!</span>
             </div>
             <div>
               <div class="flex justify-center">
-                <a class="cursor-pointer hover:text-primary-500 hover:underline">Apply
-                  Credits</a>
+                <a class="cursor-pointer hover:text-primary-500 hover:underline" @click.stop="applyCredit">
+                  Apply Credits</a>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { OpenAI } from 'openai-streams/node'
 import type { RequestSubmitGPT } from '~/server/types'
 import { prompts } from '~/server/utils/prompt'
-import { templateSchema } from '~/server/schema'
+import { licenseSchema, templateSchema } from '~/server/schema'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
@@ -21,8 +21,17 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  console.log('content', content)
-  console.log('API KEY: ', config.OPEN_API_KEY)
+  const licenseKeys = body.licenseKeys ?? []
+  if (licenseKeys.length > 0) {
+    const key = licenseKeys[0].replace('LICENSE-', '')
+    await licenseSchema.updateMany({
+      key,
+    }, {
+      $inc: {
+        activationUsage: -1,
+      },
+    })
+  }
 
   const stream = await OpenAI(
     'chat',

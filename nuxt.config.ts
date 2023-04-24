@@ -43,6 +43,7 @@ export default defineNuxtConfig({
     '@kevinmarrec/nuxt-pwa',
     'nuxt-security',
     'nuxt-gtag',
+    '@vueuse/nuxt',
   ],
   css: ['@/assets/styles/global.css'],
   app: {

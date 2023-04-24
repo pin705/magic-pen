@@ -14,4 +14,5 @@ export interface RequestSubmitGPT {
   explain: boolean
   codeTask: CodeTask
   wantWrite: string
+  licenseKeys: string[]
 }
