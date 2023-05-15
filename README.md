@@ -1,6 +1,20 @@
-# Nuxt 3 Minimal Starter
+# Writing AI
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<img src="screenshots/1.png" style="width: 100%" />
+
+<img src="screenshots/2.png" style="width: 100%" />
+
+<img src="screenshots/3.png" style="width: 100%" />
+
+<img src="screenshots/4.png" style="width: 100%" />
+
+<img src="screenshots/5.png" style="width: 100%" />
+
+<img src="screenshots/6.png" style="width: 100%" />
+
+<img src="screenshots/7.png" style="width: 100%" />
+
+<img src="screenshots/8.png" style="width: 100%" />
 
 ## Setup
 
