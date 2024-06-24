@@ -12,7 +12,6 @@ export default defineNuxtConfig({
         proxy: 'http://localhost:3005/api/magic',
       },
     },
-    preset: 'node-server',
     plugins: [
       '~/server/index.ts',
     ],
